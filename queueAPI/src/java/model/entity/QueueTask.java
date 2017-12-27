@@ -27,6 +27,10 @@ public class QueueTask extends AbstractMongoEntity {
 
     private String input;
 
+    private String executor;
+
+    private String processor;
+
     private Object output = new Object();
 
     public QueueTask() {
@@ -78,6 +82,22 @@ public class QueueTask extends AbstractMongoEntity {
 
     public void setOutput(Object output) {
         this.output = output;
+    }
+
+    public String getExecutor() {
+        return executor;
+    }
+
+    public void setExecutor(String executor) {
+        this.executor = executor;
+    }
+
+    public String getProcessor() {
+        return processor;
+    }
+
+    public void setProcessor(String processor) {
+        this.processor = processor;
     }
 
 }

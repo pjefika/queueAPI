@@ -5,14 +5,21 @@
  */
 package model.domain.queue.service;
 
+import model.domain.queue.enuns.TaskState;
 import model.entity.QueueTask;
 
-
-public class QueueTaskServiceImpl implements QueueTaskService {
+public class QueueTaskServiceImpl extends AbstractQueueTaskService implements QueueTaskService {
 
     @Override
     public QueueTask process(QueueTask task) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        getDao().save(task);
+        do {
+            task = getDao().read(task.getId());
+            System.out.println("Espera!");
+            Thread.sleep(1000);
+        } while (task.getState() != TaskState.EXECUTED);
+
+        return task;
     }
-    
+
 }

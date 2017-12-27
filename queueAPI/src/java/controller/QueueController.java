@@ -11,6 +11,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import model.domain.queue.service.factory.FactoryService;
+import model.entity.QueueTask;
 
 /**
  *
@@ -23,10 +25,10 @@ public class QueueController extends RestJaxAbstract {
     @Path("/queue")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response manobra(String cs) throws Exception {
+    public Response queue(QueueTask task) throws Exception {
         try {
-
-            return ok(null);
+            FactoryService.createQueueTaskService().process(task);
+            return ok(task);
         } catch (Exception e) {
             return serverError(null);
         } finally {
