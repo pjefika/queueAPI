@@ -19,6 +19,8 @@ public class QueueTask extends AbstractMongoEntity {
 
     private Date dateQueueIn;
 
+    private Date dateConsumed;
+
     private Date dateQueueOut;
 
     private TaskState state;
@@ -29,7 +31,7 @@ public class QueueTask extends AbstractMongoEntity {
 
     private String executor;
 
-    private String processor;
+    private String consumer;
 
     private Object output = new Object();
 
@@ -92,12 +94,20 @@ public class QueueTask extends AbstractMongoEntity {
         this.executor = executor;
     }
 
-    public String getProcessor() {
-        return processor;
+    public String getConsumer() {
+        return consumer;
     }
 
-    public void setProcessor(String processor) {
-        this.processor = processor;
+    public void setConsumer(String consumer) {
+        this.consumer = consumer;
+    }
+
+    public Date getDateConsumed() {
+        return dateConsumed;
+    }
+
+    public void setDateConsumed(Date dateConsumed) {
+        this.dateConsumed = dateConsumed;
     }
 
 }

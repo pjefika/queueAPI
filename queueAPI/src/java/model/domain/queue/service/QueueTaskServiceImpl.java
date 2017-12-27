@@ -5,6 +5,7 @@
  */
 package model.domain.queue.service;
 
+import java.util.Date;
 import model.domain.queue.enuns.TaskState;
 import model.entity.QueueTask;
 
@@ -12,6 +13,8 @@ public class QueueTaskServiceImpl extends AbstractQueueTaskService implements Qu
 
     @Override
     public QueueTask process(QueueTask task) throws Exception {
+        task.setDateQueueIn(new Date());
+        task.setState(TaskState.PENDING);
         getDao().save(task);
         do {
             task = getDao().read(task.getId());

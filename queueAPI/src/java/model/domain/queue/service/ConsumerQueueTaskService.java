@@ -14,7 +14,7 @@ import model.entity.QueueTask;
  */
 public interface ConsumerQueueTaskService {
 
-    public List<QueueTask> getPendingTasks() throws Exception;
+    public List<QueueTask> getPendingTasks(String consumer) throws Exception;
 
     public void completeTask(QueueTask queueTask) throws Exception;
 

@@ -5,7 +5,7 @@
  */
 package mock;
 
-import java.util.Calendar;
+import java.util.Date;
 import model.domain.queue.enuns.TasksEnum;
 import model.entity.QueueTask;
 
@@ -18,7 +18,7 @@ public class QueueTaskMock {
     public static QueueTask createDefaultQueueTask() {
         QueueTask task = new QueueTask();
         
-        task.setDateQueueIn(Calendar.getInstance().getTime());
+        task.setDateQueueIn(new Date());
         task.setExecutor("G0042204");
         task.setTask(TasksEnum.FULLTEST);
         

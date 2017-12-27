@@ -27,10 +27,8 @@ public class QueueTaskDAOImpl extends AbstractMongoDAO<QueueTask> implements Que
     }
 
     @Override
-    public QueueTask update(QueueTask t) throws Exception {
-        getDatastore().update(t, createOperations()
-                .set("state", t.getState())
-        .set("", t));
+    public QueueTask update(QueueTask t, UpdateOperations<QueueTask> opers) throws Exception {
+        getDatastore().update(t, opers);
         return t;
     }
 

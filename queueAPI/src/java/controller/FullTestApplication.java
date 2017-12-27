@@ -21,6 +21,7 @@ public class FullTestApplication extends Application {
 
     public FullTestApplication() {
         singletons.add(new QueueController());
+        singletons.add(new TaskController());
     }
 
     public Set<Object> getSingletons() {

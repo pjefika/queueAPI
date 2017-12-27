@@ -5,8 +5,7 @@
  */
 package dao.queue;
 
-import static java.lang.System.out;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import model.domain.queue.enuns.TaskState;
 import model.domain.queue.enuns.TasksEnum;
@@ -44,7 +43,7 @@ public class QueueTaskDAOImplIT {
         try {
             QueueTaskDAOImpl dao = new QueueTaskDAOImpl();
             QueueTask t = new QueueTask();
-            t.setDateQueueIn(Calendar.getInstance().getTime());
+            t.setDateQueueIn(new Date());
             t.setInput("4130886762");
             t.setState(TaskState.PENDING);
             t.setTask(TasksEnum.FULLTEST);

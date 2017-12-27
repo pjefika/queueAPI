@@ -7,6 +7,8 @@ package model.domain.queue.service;
 
 import dao.factory.FactoryDAO;
 import dao.queue.QueueTaskDAO;
+import model.entity.QueueTask;
+import org.mongodb.morphia.query.UpdateOperations;
 
 /**
  *
@@ -17,10 +19,14 @@ public abstract class AbstractQueueTaskService {
     private QueueTaskDAO dao;
 
     public QueueTaskDAO getDao() {
-        if(dao == null){
+        if (dao == null) {
             dao = FactoryDAO.createQueueTaskDAO();
         }
         return dao;
+    }
+
+    protected UpdateOperations<QueueTask> oper() {
+        return getDao().createUpdateOperations();
     }
 
 }
