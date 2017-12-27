@@ -44,7 +44,7 @@ public class QueueTaskDAOImplIT {
         try {
             QueueTaskDAOImpl dao = new QueueTaskDAOImpl();
             QueueTask t = new QueueTask();
-            t.setDateQueueIn(Calendar.getInstance());
+            t.setDateQueueIn(Calendar.getInstance().getTime());
             t.setInput("4130886762");
             t.setState(TaskState.PENDING);
             t.setTask(TasksEnum.FULLTEST);

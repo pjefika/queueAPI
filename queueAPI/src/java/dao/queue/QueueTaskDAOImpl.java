@@ -9,6 +9,7 @@ import dao.AbstractMongoDAO;
 import java.util.List;
 import model.domain.queue.enuns.TaskState;
 import model.entity.QueueTask;
+import org.mongodb.morphia.query.UpdateOperations;
 
 /**
  *
@@ -23,6 +24,14 @@ public class QueueTaskDAOImpl extends AbstractMongoDAO<QueueTask> implements Que
     @Override
     public List<QueueTask> listByState(TaskState state) throws Exception {
         return getDatastore().createQuery(QueueTask.class).field("state").equal(state).asList();
+    }
+
+    @Override
+    public QueueTask update(QueueTask t) throws Exception {
+        getDatastore().update(t, createOperations()
+                .set("state", t.getState())
+        .set("", t));
+        return t;
     }
 
 }

@@ -5,7 +5,7 @@
  */
 package model.entity;
 
-import java.util.Calendar;
+import java.util.Date;
 import model.domain.queue.enuns.TaskState;
 import model.domain.queue.enuns.TasksEnum;
 import org.mongodb.morphia.annotations.Entity;
@@ -17,9 +17,9 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity("queue_task")
 public class QueueTask extends AbstractMongoEntity {
 
-    private Calendar dateQueueIn;
+    private Date dateQueueIn;
 
-    private Calendar dateQueueOut;
+    private Date dateQueueOut;
 
     private TaskState state;
 
@@ -32,19 +32,19 @@ public class QueueTask extends AbstractMongoEntity {
     public QueueTask() {
     }
 
-    public Calendar getDateQueueIn() {
+    public Date getDateQueueIn() {
         return dateQueueIn;
     }
 
-    public void setDateQueueIn(Calendar dateQueueIn) {
+    public void setDateQueueIn(Date dateQueueIn) {
         this.dateQueueIn = dateQueueIn;
     }
 
-    public Calendar getDateQueueOut() {
+    public Date getDateQueueOut() {
         return dateQueueOut;
     }
 
-    public void setDateQueueOut(Calendar dateQueueOut) {
+    public void setDateQueueOut(Date dateQueueOut) {
         this.dateQueueOut = dateQueueOut;
     }
 

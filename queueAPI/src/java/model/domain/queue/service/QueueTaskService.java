@@ -3,19 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.queue;
+package model.domain.queue.service;
 
-import dao.GenericDAO;
-import java.util.List;
-import model.domain.queue.enuns.TaskState;
 import model.entity.QueueTask;
 
 /**
  *
  * @author G0042204
  */
-public interface QueueTaskDAO extends GenericDAO<QueueTask> {
+public interface QueueTaskService {
 
-    public List<QueueTask> listByState(TaskState state) throws Exception;
+    public QueueTask process(QueueTask task) throws Exception;
 
 }
