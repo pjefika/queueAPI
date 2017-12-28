@@ -9,13 +9,13 @@ package controller.request;
  *
  * @author G0042204
  */
-public class ConsumerQuestTaskRequest {
+public class ConsumerQueueTaskRequest {
 
     private String consumer;
 
     private Integer amount;
 
-    public ConsumerQuestTaskRequest() {
+    public ConsumerQueueTaskRequest() {
         amount = 5;
     }
 

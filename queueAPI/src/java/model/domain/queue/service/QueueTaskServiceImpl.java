@@ -13,15 +13,24 @@ public class QueueTaskServiceImpl extends AbstractQueueTaskService implements Qu
 
     @Override
     public QueueTask process(QueueTask task) throws Exception {
-        task.setDateQueueIn(new Date());
-        task.setState(TaskState.PENDING);
-        getDao().save(task);
+        getDao().save(this.prepare(task));
         do {
             task = getDao().read(task.getId());
-            System.out.println("Espera!");
             Thread.sleep(1000);
         } while (task.getState() != TaskState.EXECUTED);
 
+        return task;
+    }
+
+    @Override
+    public QueueTask queue(QueueTask task) throws Exception {
+        getDao().save(this.prepare(task));
+        return task;
+    }
+
+    protected QueueTask prepare(QueueTask task) {
+        task.setDateQueueIn(new Date());
+        task.setState(TaskState.PENDING);
         return task;
     }
 

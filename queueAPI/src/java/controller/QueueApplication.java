@@ -13,13 +13,13 @@ import javax.ws.rs.core.Application;
  *
  * @author G0041775
  */
-public class FullTestApplication extends Application {
+public class QueueApplication extends Application {
 
     private Set<Object> singletons = new HashSet<Object>();
 
     private Set<Class<?>> empty = new HashSet<Class<?>>();
 
-    public FullTestApplication() {
+    public QueueApplication() {
         singletons.add(new QueueController());
         singletons.add(new TaskController());
     }

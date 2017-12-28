@@ -5,8 +5,10 @@
  */
 package dao.queue;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import model.domain.queue.Item;
 import model.domain.queue.enuns.TaskState;
 import model.domain.queue.enuns.TasksEnum;
 import model.entity.QueueTask;
@@ -44,7 +46,7 @@ public class QueueTaskDAOImplIT {
             QueueTaskDAOImpl dao = new QueueTaskDAOImpl();
             QueueTask t = new QueueTask();
             t.setDateQueueIn(new Date());
-            t.setInput("4130886762");
+            t.addInputItem(new Item("instancia", "4130886762"));
             t.setState(TaskState.PENDING);
             t.setTask(TasksEnum.FULLTEST);
             dao.save(t);

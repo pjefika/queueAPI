@@ -19,4 +19,8 @@ public enum TasksEnum {
         this.desc = desc;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
 }

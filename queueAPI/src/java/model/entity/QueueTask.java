@@ -5,7 +5,10 @@
  */
 package model.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import model.domain.queue.Item;
 import model.domain.queue.enuns.TaskState;
 import model.domain.queue.enuns.TasksEnum;
 import org.mongodb.morphia.annotations.Entity;
@@ -27,13 +30,13 @@ public class QueueTask extends AbstractMongoEntity {
 
     private TasksEnum task;
 
-    private String input;
+    private List<Item> input;
 
     private String executor;
 
     private String consumer;
 
-    private Object output = new Object();
+    private Object output;
 
     public QueueTask() {
     }
@@ -70,16 +73,19 @@ public class QueueTask extends AbstractMongoEntity {
         this.task = task;
     }
 
-    public String getInput() {
+    public List<Item> getInput() {
+        if (input == null) {
+            input = new ArrayList<>();
+        }
         return input;
     }
 
-    public void setInput(String input) {
-        this.input = input;
+    public void addInputItem(Item item) {
+        this.getInput().add(item);
     }
 
-    public Object getOutput() {
-        return output;
+    public void setInput(List<Item> input) {
+        this.input = input;
     }
 
     public void setOutput(Object output) {
@@ -108,6 +114,10 @@ public class QueueTask extends AbstractMongoEntity {
 
     public void setDateConsumed(Date dateConsumed) {
         this.dateConsumed = dateConsumed;
+    }
+
+    public Object getOutput() {
+        return output;
     }
 
 }

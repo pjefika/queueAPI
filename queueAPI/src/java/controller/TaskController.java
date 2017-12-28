@@ -25,9 +25,21 @@ public class TaskController extends RestJaxAbstract {
     @Path("/process")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response process(QueueTask task){
+    public Response process(QueueTask task) {
         try {
             return ok(FactoryService.createQueueTaskService().process(task));
+        } catch (Exception e) {
+            return serverError(e);
+        }
+    }
+
+    @POST
+    @Path("/queue")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response queue(QueueTask task) {
+        try {
+            return ok(FactoryService.createQueueTaskService().queue(task));
         } catch (Exception e) {
             return serverError(e);
         }

@@ -14,5 +14,7 @@ import model.entity.QueueTask;
 public interface QueueTaskService {
 
     public QueueTask process(QueueTask task) throws Exception;
+    
+    public QueueTask queue(QueueTask task) throws Exception;
 
 }

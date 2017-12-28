@@ -17,8 +17,8 @@ public class ConsumerQueueTaskServiceImpl extends AbstractQueueTaskService imple
     private static final Logger LOG = Logger.getLogger(ConsumerQueueTaskServiceImpl.class.getName());
 
     @Override
-    public List<QueueTask> getPendingTasks(String consumer) throws Exception {
-        List<QueueTask> pending = getDao().listByState(TaskState.PENDING);
+    public List<QueueTask> consumePendingTasks(String consumer) throws Exception {
+        List<QueueTask> pending = this.getPendingTasks();
         pending.forEach((t) -> {
             t.setState(TaskState.RUNNING);
             t.setDateConsumed(new Date());
@@ -43,6 +43,11 @@ public class ConsumerQueueTaskServiceImpl extends AbstractQueueTaskService imple
                 .set("state", t.getState())
                 .set("dateQueueOut", t.getDateQueueOut())
                 .set("output", t.getOutput()));
+    }
+
+    @Override
+    public List<QueueTask> getPendingTasks() throws Exception {
+        return getDao().listByState(TaskState.PENDING);
     }
 
 }

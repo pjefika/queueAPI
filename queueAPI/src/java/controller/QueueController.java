@@ -5,14 +5,16 @@
  */
 package controller;
 
-import controller.request.ConsumerQuestTaskRequest;
+import controller.request.ConsumerQueueTaskRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import model.domain.queue.service.factory.FactoryService;
+import model.entity.QueueTask;
 
 /**
  *
@@ -22,12 +24,37 @@ import model.domain.queue.service.factory.FactoryService;
 public class QueueController extends RestJaxAbstract {
 
     @POST
-    @Path("/process")
+    @Path("/consumePendingTasks")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response process(ConsumerQuestTaskRequest request) {
+    public Response consumePendingTasks(ConsumerQueueTaskRequest request) {
         try {
-            return ok(FactoryService.createConsumerQueueTaskService().getPendingTasks(request.getConsumer()));
+            return ok(FactoryService.createConsumerQueueTaskService().consumePendingTasks(request.getConsumer()));
+        } catch (Exception e) {
+            return serverError(e);
+        }
+    }
+
+    @GET
+    @Path("/getPendingTasks")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getPendingTasks() {
+        try {
+            return ok(FactoryService.createConsumerQueueTaskService().getPendingTasks());
+        } catch (Exception e) {
+            return serverError(e);
+        }
+    }
+
+    @POST
+    @Path("/completeTask")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response completeTask(QueueTask task) {
+        try {
+            FactoryService.createConsumerQueueTaskService().completeTask(task);
+            return ok(true);
         } catch (Exception e) {
             return serverError(e);
         }
