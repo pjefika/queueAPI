@@ -5,6 +5,7 @@
  */
 package model.domain.queue.service;
 
+import controller.response.PendingTasksResponse;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,7 +18,8 @@ public class ConsumerQueueTaskServiceImpl extends AbstractQueueTaskService imple
     private static final Logger LOG = Logger.getLogger(ConsumerQueueTaskServiceImpl.class.getName());
 
     @Override
-    public List<QueueTask> consumePendingTasks(String consumer) throws Exception {
+    public PendingTasksResponse consumePendingTasks(String consumer) throws Exception {
+        PendingTasksResponse ret = new PendingTasksResponse();
         List<QueueTask> pending = this.getPendingTasks();
         pending.forEach((t) -> {
             t.setState(TaskState.RUNNING);
@@ -32,7 +34,8 @@ public class ConsumerQueueTaskServiceImpl extends AbstractQueueTaskService imple
                 LOG.log(Level.WARNING, "Falha ao alterar: {0}", t.getId().toHexString());
             }
         });
-        return pending;
+        ret.setTasks(pending);
+        return ret;
     }
 
     @Override

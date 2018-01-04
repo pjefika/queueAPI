@@ -5,8 +5,7 @@
  */
 package model.domain.queue.service;
 
-import java.util.List;
-import model.entity.QueueTask;
+import controller.response.PendingTasksResponse;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -41,8 +40,8 @@ public class ConsumerQueueTaskServiceImplIT {
     public void testConsumePendingTasks() throws Exception {
         System.out.println("getPendingTasks");
         ConsumerQueueTaskServiceImpl instance = new ConsumerQueueTaskServiceImpl();
-        List<QueueTask> result = instance.consumePendingTasks("consumer");
-        assertTrue(!result.isEmpty());
+        PendingTasksResponse result = instance.consumePendingTasks("consumer");
+        assertTrue(!result.getTasks().isEmpty());
     }
 
     /**
@@ -52,7 +51,7 @@ public class ConsumerQueueTaskServiceImplIT {
     public void testCompleteTask() throws Exception {
         System.out.println("completeTask");
         ConsumerQueueTaskServiceImpl instance = new ConsumerQueueTaskServiceImpl();
-        instance.consumePendingTasks("consumer").forEach((t) -> {
+        instance.consumePendingTasks("consumer").getTasks().forEach((t) -> {
             try {
                 instance.completeTask(t);
             } catch (Exception e) {
