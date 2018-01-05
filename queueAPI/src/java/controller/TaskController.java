@@ -6,13 +6,16 @@
 package controller;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import model.domain.queue.service.factory.FactoryService;
 import model.entity.QueueTask;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -20,6 +23,18 @@ import model.entity.QueueTask;
  */
 @Path("/task")
 public class TaskController extends RestJaxAbstract {
+
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response getTask(@PathParam("id") ObjectId id) {
+        try {
+            return ok(FactoryService.createQueueTaskService().getById(id));
+        } catch (Exception e) {
+            return serverError(e);
+        }
+    }
 
     @POST
     @Path("/process")
@@ -29,6 +44,7 @@ public class TaskController extends RestJaxAbstract {
         try {
             return ok(FactoryService.createQueueTaskService().process(task));
         } catch (Exception e) {
+            e.printStackTrace();
             return serverError(e);
         }
     }

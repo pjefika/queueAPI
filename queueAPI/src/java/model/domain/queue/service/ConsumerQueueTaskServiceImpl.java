@@ -31,7 +31,7 @@ public class ConsumerQueueTaskServiceImpl extends AbstractQueueTaskService imple
                         .set("consumer", t.getConsumer())
                         .set("dateConsumed", t.getDateConsumed()));
             } catch (Exception e) {
-                LOG.log(Level.WARNING, "Falha ao alterar: {0}", t.getId().toHexString());
+                LOG.log(Level.WARNING, "Falha ao alterar: {0}", t.getId());
             }
         });
         ret.setTasks(pending);
@@ -39,13 +39,15 @@ public class ConsumerQueueTaskServiceImpl extends AbstractQueueTaskService imple
     }
 
     @Override
-    public void completeTask(QueueTask t) throws Exception {
+    public QueueTask completeTask(QueueTask t) throws Exception {
         t.setDateQueueOut(new Date());
         t.setState(TaskState.EXECUTED);
         getDao().update(t, oper()
                 .set("state", t.getState())
                 .set("dateQueueOut", t.getDateQueueOut())
                 .set("output", t.getOutput()));
+
+        return t;
     }
 
     @Override

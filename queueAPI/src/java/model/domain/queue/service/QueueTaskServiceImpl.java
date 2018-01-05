@@ -8,6 +8,7 @@ package model.domain.queue.service;
 import java.util.Date;
 import model.domain.queue.enuns.TaskState;
 import model.entity.QueueTask;
+import org.bson.types.ObjectId;
 
 public class QueueTaskServiceImpl extends AbstractQueueTaskService implements QueueTaskService {
 
@@ -15,11 +16,20 @@ public class QueueTaskServiceImpl extends AbstractQueueTaskService implements Qu
     public QueueTask process(QueueTask task) throws Exception {
         getDao().save(this.prepare(task));
         do {
-            task = getDao().read(task.getId());
+            task = getById(task.getId());
             Thread.sleep(1000);
         } while (task.getState() != TaskState.EXECUTED);
 
         return task;
+    }
+
+    @Override
+    public QueueTask getById(ObjectId id) throws Exception {
+        QueueTask read = getDao().read(id);
+        if (read == null) {
+            throw new Exception("Task não encontrada!");
+        }
+        return read;
     }
 
     @Override

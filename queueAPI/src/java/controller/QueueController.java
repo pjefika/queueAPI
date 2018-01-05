@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import model.domain.queue.service.factory.FactoryService;
 import model.entity.QueueTask;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -45,17 +46,19 @@ public class QueueController extends RestJaxAbstract {
         } catch (Exception e) {
             return serverError(e);
         }
-    }
+    }    
+    
 
     @POST
     @Path("/completeTask")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+
     public Response completeTask(QueueTask task) {
         try {
-            FactoryService.createConsumerQueueTaskService().completeTask(task);
-            return ok(true);
+            return ok(FactoryService.createConsumerQueueTaskService().completeTask(task));
         } catch (Exception e) {
+            e.printStackTrace();
             return serverError(e);
         }
     }

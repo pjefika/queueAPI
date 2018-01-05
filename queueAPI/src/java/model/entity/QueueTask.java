@@ -6,9 +6,7 @@
 package model.entity;
 
 import model.domain.queue.QueueTaskDTO;
-import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
 
 /**
  *
@@ -17,18 +15,7 @@ import org.mongodb.morphia.annotations.Id;
 @Entity("queue_task")
 public class QueueTask extends QueueTaskDTO {
 
-    @Id
-    private ObjectId id;
-
     public QueueTask() {
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
 }

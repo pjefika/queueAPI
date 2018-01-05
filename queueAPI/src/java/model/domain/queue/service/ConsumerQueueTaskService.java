@@ -17,7 +17,7 @@ public interface ConsumerQueueTaskService {
 
     public PendingTasksResponse consumePendingTasks(String consumer) throws Exception;
 
-    public void completeTask(QueueTask queueTask) throws Exception;
+    public QueueTask completeTask(QueueTask queueTask) throws Exception;
 
     public List<QueueTask> getPendingTasks() throws Exception;
 

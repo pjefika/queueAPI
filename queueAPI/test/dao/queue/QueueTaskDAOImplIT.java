@@ -12,6 +12,7 @@ import model.domain.queue.Item;
 import model.domain.queue.enuns.TaskState;
 import model.domain.queue.enuns.TasksEnum;
 import model.entity.QueueTask;
+import org.bson.types.ObjectId;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
@@ -24,38 +25,41 @@ import org.junit.Test;
  * @author G0042204
  */
 public class QueueTaskDAOImplIT {
-
+    
     public QueueTaskDAOImplIT() {
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
-
+    
     @Before
     public void setUp() {
     }
-
+    
     @After
     public void tearDown() {
     }
-
+    
     @Test
     public void testSave() {
         try {
+            
+            List<Item> itens = new ArrayList<>();
+            itens.add(new Item("instancia", "4130886762"));
             QueueTaskDAOImpl dao = new QueueTaskDAOImpl();
             QueueTask t = new QueueTask();
             t.setDateQueueIn(new Date());
-            t.addInputItem(new Item("instancia", "4130886762"));
+            t.setInput(itens);
             t.setState(TaskState.PENDING);
             t.setTask(TasksEnum.FULLTEST);
             dao.save(t);
         } catch (Exception e) {
             fail(e.getMessage());
-
+            
         }
     }
-
+    
     @Test
     public void testListByState() {
         try {
@@ -64,8 +68,21 @@ public class QueueTaskDAOImplIT {
             assertTrue(!listByState.isEmpty());
         } catch (Exception e) {
             fail(e.getMessage());
-
+            
         }
     }
-
+    
+    @Test
+    public void testGetById() {
+        try {
+            QueueTaskDAOImpl dao = new QueueTaskDAOImpl();
+            ObjectId id = new ObjectId("5a4f7306ab590d1388b82f9f");
+            QueueTask task = dao.read(id);
+            assertTrue(task != null);
+        } catch (Exception e) {
+            fail(e.getMessage());
+            
+        }
+    }
+    
 }

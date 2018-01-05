@@ -6,6 +6,7 @@
 package model.domain.queue.service;
 
 import model.entity.QueueTask;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -14,7 +15,9 @@ import model.entity.QueueTask;
 public interface QueueTaskService {
 
     public QueueTask process(QueueTask task) throws Exception;
-    
+
     public QueueTask queue(QueueTask task) throws Exception;
+
+    public QueueTask getById(ObjectId task) throws Exception;
 
 }
