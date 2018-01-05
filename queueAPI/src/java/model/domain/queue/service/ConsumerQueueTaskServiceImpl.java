@@ -5,7 +5,7 @@
  */
 package model.domain.queue.service;
 
-import controller.response.PendingTasksResponse;
+import controller.request.PendingTasksResponse;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,8 +33,8 @@ public class ConsumerQueueTaskServiceImpl extends AbstractQueueTaskService imple
             } catch (Exception e) {
                 LOG.log(Level.WARNING, "Falha ao alterar: {0}", t.getId());
             }
+            ret.getTasks().add(t);
         });
-        ret.setTasks(pending);
         return ret;
     }
 
@@ -45,14 +45,18 @@ public class ConsumerQueueTaskServiceImpl extends AbstractQueueTaskService imple
         getDao().update(t, oper()
                 .set("state", t.getState())
                 .set("dateQueueOut", t.getDateQueueOut())
-                .set("output", t.getOutput()));
-
+        );
         return t;
     }
 
     @Override
     public List<QueueTask> getPendingTasks() throws Exception {
         return getDao().listByState(TaskState.PENDING);
+    }
+
+    @Override
+    public QueueTask completeFulltest(QueueTask queueTask) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

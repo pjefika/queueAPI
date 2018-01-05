@@ -5,7 +5,7 @@
  */
 package model.domain.queue.service;
 
-import controller.response.PendingTasksResponse;
+import controller.request.PendingTasksResponse;
 import java.util.List;
 import model.entity.QueueTask;
 
@@ -18,6 +18,8 @@ public interface ConsumerQueueTaskService {
     public PendingTasksResponse consumePendingTasks(String consumer) throws Exception;
 
     public QueueTask completeTask(QueueTask queueTask) throws Exception;
+
+    public QueueTask completeFulltest(QueueTask queueTask) throws Exception;
 
     public List<QueueTask> getPendingTasks() throws Exception;
 

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.response;
+package controller.request;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.entity.QueueTask;
 
@@ -17,6 +18,7 @@ public class PendingTasksResponse {
     private List<QueueTask> tasks;
 
     public PendingTasksResponse() {
+        tasks = new ArrayList<>();
     }
 
     public List<QueueTask> getTasks() {

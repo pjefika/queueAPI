@@ -5,7 +5,7 @@
  */
 package model.domain.queue.service;
 
-import controller.response.PendingTasksResponse;
+import controller.request.PendingTasksResponse;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

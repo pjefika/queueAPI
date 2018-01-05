@@ -15,7 +15,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import model.domain.queue.service.factory.FactoryService;
 import model.entity.QueueTask;
-import org.bson.types.ObjectId;
 
 /**
  *
@@ -46,8 +45,7 @@ public class QueueController extends RestJaxAbstract {
         } catch (Exception e) {
             return serverError(e);
         }
-    }    
-    
+    }
 
     @POST
     @Path("/completeTask")
@@ -55,6 +53,20 @@ public class QueueController extends RestJaxAbstract {
     @Consumes(MediaType.APPLICATION_JSON)
 
     public Response completeTask(QueueTask task) {
+        try {
+            return ok(FactoryService.createConsumerQueueTaskService().completeTask(task));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return serverError(e);
+        }
+    }
+
+    @POST
+    @Path("/completeTask/fulltest")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+
+    public Response completeFulltest(QueueTask task) {
         try {
             return ok(FactoryService.createConsumerQueueTaskService().completeTask(task));
         } catch (Exception e) {
