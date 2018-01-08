@@ -50,7 +50,7 @@ public class QueueTaskDAOImplIT {
             QueueTaskDAOImpl dao = new QueueTaskDAOImpl();
             QueueTask t = new QueueTask();
             t.setDateQueueIn(new Date());
-            t.setInput(itens);
+//            t.setInput(itens);
             t.setState(TaskState.PENDING);
             t.setTask(TasksEnum.FULLTEST);
             dao.save(t);

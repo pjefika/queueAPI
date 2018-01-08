@@ -5,7 +5,7 @@
  */
 package model.entity;
 
-import model.domain.queue.QueueTaskDTO;
+import model.domain.queue.dto.QueueTaskDTO;
 import org.mongodb.morphia.annotations.Entity;
 
 /**
