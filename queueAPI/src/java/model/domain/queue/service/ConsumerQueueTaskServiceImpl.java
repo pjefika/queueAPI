@@ -44,6 +44,7 @@ public class ConsumerQueueTaskServiceImpl extends AbstractQueueTaskService imple
         t.setState(TaskState.EXECUTED);
         getDao().update(t, oper()
                 .set("state", t.getState())
+                .set("output", t.getOutput())
                 .set("dateQueueOut", t.getDateQueueOut())
         );
         return t;
