@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain.queue.service;
+package model.service;
 
 import java.util.Date;
-import model.domain.queue.enuns.TaskState;
 import model.entity.QueueTask;
+import model.enuns.TaskState;
 import org.bson.types.ObjectId;
 
 public class QueueTaskServiceImpl extends AbstractQueueTaskService implements QueueTaskService {

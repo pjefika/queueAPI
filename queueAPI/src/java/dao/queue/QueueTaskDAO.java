@@ -7,8 +7,8 @@ package dao.queue;
 
 import dao.GenericDAO;
 import java.util.List;
-import model.domain.queue.enuns.TaskState;
 import model.entity.QueueTask;
+import model.enuns.TaskState;
 
 /**
  *

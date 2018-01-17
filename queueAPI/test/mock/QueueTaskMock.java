@@ -6,8 +6,8 @@
 package mock;
 
 import java.util.Date;
-import model.domain.queue.enuns.TasksEnum;
 import model.entity.QueueTask;
+import model.enuns.TasksEnum;
 
 /**
  *
@@ -20,7 +20,7 @@ public class QueueTaskMock {
         
         task.setDateQueueIn(new Date());
         task.setExecutor("G0042204");
-        task.setTask(TasksEnum.FULLTEST);
+        task.setTask(TasksEnum.CERTIFICATION);
         
         return task;
     }

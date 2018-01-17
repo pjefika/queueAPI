@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain.queue.service.factory;
+package model.service.factory;
 
-import model.domain.queue.service.ConsumerQueueTaskService;
-import model.domain.queue.service.ConsumerQueueTaskServiceImpl;
-import model.domain.queue.service.QueueTaskService;
-import model.domain.queue.service.QueueTaskServiceImpl;
+import model.service.ConsumerQueueTaskService;
+import model.service.ConsumerQueueTaskServiceImpl;
+import model.service.QueueTaskService;
+import model.service.QueueTaskServiceImpl;
 
 /**
  *

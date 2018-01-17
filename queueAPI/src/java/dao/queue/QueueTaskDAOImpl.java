@@ -7,8 +7,8 @@ package dao.queue;
 
 import dao.AbstractMongoDAO;
 import java.util.List;
-import model.domain.queue.enuns.TaskState;
 import model.entity.QueueTask;
+import model.enuns.TaskState;
 import org.mongodb.morphia.query.UpdateOperations;
 
 /**

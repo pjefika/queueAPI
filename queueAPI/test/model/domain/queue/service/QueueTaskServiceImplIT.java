@@ -5,9 +5,10 @@
  */
 package model.domain.queue.service;
 
+import model.service.QueueTaskServiceImpl;
 import mock.QueueTaskMock;
-import model.domain.queue.enuns.TaskState;
 import model.entity.QueueTask;
+import model.enuns.TaskState;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,18 +20,18 @@ import static org.junit.Assert.*;
  * @author G0042204
  */
 public class QueueTaskServiceImplIT {
-    
+
     public QueueTaskServiceImplIT() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -45,7 +46,7 @@ public class QueueTaskServiceImplIT {
         QueueTaskServiceImpl instance = new QueueTaskServiceImpl();
         QueueTask result = instance.process(task);
         assertTrue(result.getState() == TaskState.EXECUTED);
-        
+
     }
-    
+
 }

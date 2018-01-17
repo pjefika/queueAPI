@@ -5,12 +5,11 @@
  */
 package dao.queue;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import model.domain.queue.enuns.TaskState;
-import model.domain.queue.enuns.TasksEnum;
 import model.entity.QueueTask;
+import model.enuns.TaskState;
+import model.enuns.TasksEnum;
 import org.bson.types.ObjectId;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -51,7 +50,7 @@ public class QueueTaskDAOImplIT {
             t.setDateQueueIn(new Date());
 //            t.setInput(itens);
             t.setState(TaskState.PENDING);
-            t.setTask(TasksEnum.FULLTEST);
+            t.setTask(TasksEnum.CERTIFICATION);
             dao.save(t);
         } catch (Exception e) {
             fail(e.getMessage());

@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain.queue.service;
+package model.service;
 
 import controller.request.PendingTasksResponse;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.domain.queue.enuns.TaskState;
 import model.entity.QueueTask;
+import model.enuns.TaskState;
+
+
 
 public class ConsumerQueueTaskServiceImpl extends AbstractQueueTaskService implements ConsumerQueueTaskService {
 
