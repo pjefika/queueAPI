@@ -18,8 +18,9 @@ import org.mongodb.morphia.query.UpdateOperations;
 public class QueueTaskDAOImpl extends AbstractMongoDAO<QueueTask> implements QueueTaskDAO {
 
     public QueueTaskDAOImpl() {
-        super("127.0.0.1", "queueAPI", QueueTask.class);
+        super("10.40.197.137", "queueAPI", QueueTask.class);
     }
+    
 
     @Override
     public List<QueueTask> listByState(TaskState state) throws Exception {
