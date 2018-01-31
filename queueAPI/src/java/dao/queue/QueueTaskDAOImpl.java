@@ -18,7 +18,9 @@ import org.mongodb.morphia.query.UpdateOperations;
 public class QueueTaskDAOImpl extends AbstractMongoDAO<QueueTask> implements QueueTaskDAO {
 
     public QueueTaskDAOImpl() {
-        super("10.40.197.137", "queueAPI", QueueTask.class);
+        //10.40.197.137
+        //10.200.35.67
+        super("10.200.35.67", "queueAPI", QueueTask.class);
     }
     
 
