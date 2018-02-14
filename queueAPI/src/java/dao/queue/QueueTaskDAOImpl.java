@@ -5,7 +5,7 @@
  */
 package dao.queue;
 
-import dao.AbstractMongoDAO;
+import br.net.gvt.efika.mongo.dao.AbstractMongoDAO;
 import java.util.List;
 import model.entity.QueueTask;
 import model.enuns.TaskState;
