@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.net.gvt.efika.queueAPI.model.domain.queue.service;
+package br.net.gvt.efika.queueAPI.model.service;
 
 import br.net.gvt.efika.queueAPI.controller.request.PendingTasksResponse;
-import br.net.gvt.efika.queueAPI.model.service.ConsumerQueueTaskServiceImpl;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.net.gvt.efika.queueAPI.model.domain.queue.service;
+package br.net.gvt.efika.queueAPI.model.service;
 
 import br.net.gvt.efika.queue.model.enuns.TaskState;
 import br.net.gvt.efika.queueAPI.mock.QueueTaskMock;
