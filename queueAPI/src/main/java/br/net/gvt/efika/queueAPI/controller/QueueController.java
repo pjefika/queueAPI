@@ -51,7 +51,6 @@ public class QueueController extends RestJaxAbstract {
     @Path("/completeTask")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-
     public Response completeTask(QueueTask task) {
         try {
             return ok(FactoryService.createConsumerQueueTaskService().completeTask(task));
