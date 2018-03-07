@@ -5,9 +5,13 @@
  */
 package br.net.gvt.efika.queueAPI.model.service;
 
+import br.net.gvt.efika.queue.model.dto.output.CadastroResponse;
+import br.net.gvt.efika.queue.model.enuns.TaskResultState;
 import br.net.gvt.efika.queue.model.enuns.TaskState;
 import java.util.Date;
 import br.net.gvt.efika.queueAPI.model.entity.QueueTask;
+import br.net.gvt.efika.queueAPI.model.service.exception.TaskTimeoutException;
+import java.util.Calendar;
 import org.bson.types.ObjectId;
 
 public class QueueTaskServiceImpl extends AbstractQueueTaskService implements QueueTaskService {
@@ -15,10 +19,32 @@ public class QueueTaskServiceImpl extends AbstractQueueTaskService implements Qu
     @Override
     public QueueTask process(QueueTask task) throws Exception {
         getDao().save(this.prepare(task));
-        do {
-            task = getById(task.getId());
-            Thread.sleep(1000);
-        } while (task.getState() != TaskState.EXECUTED);
+        try {
+            int sleeps = 0;
+            do {
+
+                sleeps++;
+                task = getById(task.getId());
+                Thread.sleep(5000);
+
+                if (sleeps < 24) {
+                    throw new TaskTimeoutException();
+                }
+            } while (task.getState() != TaskState.EXECUTED);
+            
+        } catch (Exception e) {
+
+            CadastroResponse resp = new CadastroResponse();
+            resp.setState(TaskResultState.EXCEPTION);
+            resp.setExceptionMessage(e.getMessage());
+                    
+            getDao().update(task, oper()
+                    .set("state", TaskState.EXECUTED)
+                    .set("consumer", "queueAPI")
+                    .set("ouput", "queueAPI")
+                    .set("dateConsumed", Calendar.getInstance().getTime()));
+
+        }
 
         return task;
     }
