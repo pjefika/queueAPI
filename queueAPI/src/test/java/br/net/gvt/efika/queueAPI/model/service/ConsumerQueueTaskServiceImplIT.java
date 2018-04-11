@@ -40,7 +40,7 @@ public class ConsumerQueueTaskServiceImplIT {
     public void testConsumePendingTasks() throws Exception {
         System.out.println("getPendingTasks");
         ConsumerQueueTaskServiceImpl instance = new ConsumerQueueTaskServiceImpl();
-        PendingTasksResponse result = instance.consumePendingTasks("consumer");
+        PendingTasksResponse result = instance.consumePendingTasks(null);
         assertTrue(!result.getTasks().isEmpty());
     }
 
@@ -51,14 +51,14 @@ public class ConsumerQueueTaskServiceImplIT {
     public void testCompleteTask() throws Exception {
         System.out.println("completeTask");
         ConsumerQueueTaskServiceImpl instance = new ConsumerQueueTaskServiceImpl();
-        instance.consumePendingTasks("consumer").getTasks().forEach((t) -> {
+        instance.consumePendingTasks(null).getTasks().forEach((t) -> {
             try {
                 instance.completeTask(t);
             } catch (Exception e) {
                 fail(e.getMessage());
             }
         });
-        assertTrue(instance.getPendingTasks().isEmpty());
+        assertTrue(instance.getPendingTasks(null).isEmpty());
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package br.net.gvt.efika.queueAPI.model.service;
 
+import br.net.gvt.efika.queueAPI.controller.request.ConsumerQueueTaskRequest;
 import br.net.gvt.efika.queueAPI.controller.request.PendingTasksResponse;
 import java.util.List;
 import br.net.gvt.efika.queueAPI.model.entity.QueueTask;
@@ -15,12 +16,12 @@ import br.net.gvt.efika.queueAPI.model.entity.QueueTask;
  */
 public interface ConsumerQueueTaskService {
 
-    public PendingTasksResponse consumePendingTasks(String consumer) throws Exception;
+    public PendingTasksResponse consumePendingTasks(ConsumerQueueTaskRequest consumer) throws Exception;
 
     public QueueTask completeTask(QueueTask queueTask) throws Exception;
 
     public QueueTask completeFulltest(QueueTask queueTask) throws Exception;
 
-    public List<QueueTask> getPendingTasks() throws Exception;
+    public List<QueueTask> getPendingTasks(Integer limit) throws Exception;
 
 }

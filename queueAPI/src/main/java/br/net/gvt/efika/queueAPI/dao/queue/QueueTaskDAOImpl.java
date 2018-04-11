@@ -25,8 +25,8 @@ public class QueueTaskDAOImpl extends AbstractMongoDAO<QueueTask> implements Que
     }
 
     @Override
-    public List<QueueTask> listByState(TaskState state) throws Exception {
-        return getDatastore().createQuery(QueueTask.class).field("state").equal(state).asList();
+    public List<QueueTask> listByState(TaskState state, Integer limit) throws Exception {
+        return getDatastore().createQuery(QueueTask.class).field("state").equal(state).limit(limit).asList();
     }
 
     @Override

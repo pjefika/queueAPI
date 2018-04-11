@@ -16,6 +16,6 @@ import br.net.gvt.efika.queueAPI.model.entity.QueueTask;
  */
 public interface QueueTaskDAO extends GenericDAO<QueueTask> {
 
-    public List<QueueTask> listByState(TaskState state) throws Exception;
+    public List<QueueTask> listByState(TaskState state, Integer limit) throws Exception;
 
 }

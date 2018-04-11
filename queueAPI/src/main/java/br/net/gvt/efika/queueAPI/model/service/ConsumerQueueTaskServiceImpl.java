@@ -6,6 +6,7 @@
 package br.net.gvt.efika.queueAPI.model.service;
 
 import br.net.gvt.efika.queue.model.enuns.TaskState;
+import br.net.gvt.efika.queueAPI.controller.request.ConsumerQueueTaskRequest;
 import br.net.gvt.efika.queueAPI.controller.request.PendingTasksResponse;
 import java.util.Date;
 import java.util.List;
@@ -20,13 +21,13 @@ public class ConsumerQueueTaskServiceImpl extends AbstractQueueTaskService imple
     private static final Logger LOG = Logger.getLogger(ConsumerQueueTaskServiceImpl.class.getName());
 
     @Override
-    public PendingTasksResponse consumePendingTasks(String consumer) throws Exception {
+    public PendingTasksResponse consumePendingTasks(ConsumerQueueTaskRequest consumer) throws Exception {
         PendingTasksResponse ret = new PendingTasksResponse();
-        List<QueueTask> pending = this.getPendingTasks();
+        List<QueueTask> pending = this.getPendingTasks(consumer.getAmount());
         pending.forEach((t) -> {
             t.setState(TaskState.RUNNING);
             t.setDateConsumed(new Date());
-            t.setConsumer(consumer);
+            t.setConsumer(consumer.getConsumer());
             try {
                 getDao().update(t, oper()
                         .set("state", t.getState())
@@ -54,8 +55,8 @@ public class ConsumerQueueTaskServiceImpl extends AbstractQueueTaskService imple
     }
 
     @Override
-    public List<QueueTask> getPendingTasks() throws Exception {
-        return getDao().listByState(TaskState.PENDING);
+    public List<QueueTask> getPendingTasks(Integer limit) throws Exception {
+        return getDao().listByState(TaskState.PENDING, limit);
     }
 
     @Override

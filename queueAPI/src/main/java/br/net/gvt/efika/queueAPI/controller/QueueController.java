@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import br.net.gvt.efika.queueAPI.model.service.factory.FactoryService;
 import br.net.gvt.efika.queueAPI.model.entity.QueueTask;
+import javax.ws.rs.PathParam;
 
 /**
  *
@@ -29,19 +30,19 @@ public class QueueController extends RestJaxAbstract {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response consumePendingTasks(ConsumerQueueTaskRequest request) {
         try {
-            return ok(FactoryService.createConsumerQueueTaskService().consumePendingTasks(request.getConsumer()));
+            return ok(FactoryService.createConsumerQueueTaskService().consumePendingTasks(request));
         } catch (Exception e) {
             return serverError(e);
         }
     }
 
     @GET
-    @Path("/getPendingTasks")
+    @Path("/getPendingTasks_{quant}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getPendingTasks() {
+    public Response getPendingTasks(@PathParam("quant") String quant) {
         try {
-            return ok(FactoryService.createConsumerQueueTaskService().getPendingTasks());
+            return ok(FactoryService.createConsumerQueueTaskService().getPendingTasks(new Integer(quant)));
         } catch (Exception e) {
             return serverError(e);
         }

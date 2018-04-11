@@ -62,7 +62,7 @@ public class QueueTaskDAOImplIT {
     public void testListByState() {
         try {
             QueueTaskDAOImpl dao = new QueueTaskDAOImpl();
-            List<QueueTask> listByState = dao.listByState(TaskState.PENDING);
+            List<QueueTask> listByState = dao.listByState(TaskState.PENDING,50);
             assertTrue(!listByState.isEmpty());
         } catch (Exception e) {
             fail(e.getMessage());
