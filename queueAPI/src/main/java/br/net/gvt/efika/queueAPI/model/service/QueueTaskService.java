@@ -14,6 +14,7 @@ import org.bson.types.ObjectId;
  */
 public interface QueueTaskService {
 
+    @Deprecated
     public QueueTask process(QueueTask task) throws Exception;
 
     public QueueTask queue(QueueTask task) throws Exception;
