@@ -5,10 +5,10 @@
  */
 package br.net.gvt.efika.queueAPI.model.service;
 
-import br.net.gvt.efika.queueAPI.model.decorator.DecoratorApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.decorator.DecoratorApiUsage;
 import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
 import br.net.gvt.efika.queueAPI.model.entity.usage.ListUsage;
-import br.net.gvt.efika.queueAPI.model.enums.UsageStatus;
+import br.net.gvt.efika.queueAPI.model.entity.usage.enums.UsageStatus;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

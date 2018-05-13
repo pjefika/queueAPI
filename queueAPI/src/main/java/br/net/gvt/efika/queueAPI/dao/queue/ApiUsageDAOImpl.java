@@ -7,8 +7,8 @@ package br.net.gvt.efika.queueAPI.dao.queue;
 
 import br.net.gvt.efika.mongo.dao.AbstractMongoDAO;
 import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
-import br.net.gvt.efika.queueAPI.model.enums.UsageStatus;
-import br.net.gvt.efika.queueAPI.model.factory.FactoryApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.enums.UsageStatus;
+import br.net.gvt.efika.queueAPI.model.entity.usage.factory.FactoryApiUsage;
 import java.util.Date;
 import org.mongodb.morphia.query.UpdateOperations;
 

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.net.gvt.efika.queueAPI.model.decorator;
+package br.net.gvt.efika.queueAPI.model.entity.usage.decorator;
 
 import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
-import br.net.gvt.efika.queueAPI.model.enums.UsageStatus;
+import br.net.gvt.efika.queueAPI.model.entity.usage.enums.UsageStatus;
 import java.util.Calendar;
 
 /**

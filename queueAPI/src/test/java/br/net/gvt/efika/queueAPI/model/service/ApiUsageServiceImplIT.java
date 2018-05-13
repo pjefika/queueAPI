@@ -7,8 +7,8 @@ package br.net.gvt.efika.queueAPI.model.service;
 
 import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
 import br.net.gvt.efika.queueAPI.model.entity.usage.ListUsage;
-import br.net.gvt.efika.queueAPI.model.enums.Usage;
-import br.net.gvt.efika.queueAPI.model.factory.FactoryApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.enums.Usage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.factory.FactoryApiUsage;
 import br.net.gvt.efika.util.json.JacksonMapper;
 import java.util.Date;
 import java.util.List;

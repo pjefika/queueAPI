@@ -16,8 +16,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import br.net.gvt.efika.queueAPI.model.service.factory.FactoryService;
 import br.net.gvt.efika.queueAPI.model.entity.QueueTask;
-import br.net.gvt.efika.queueAPI.model.enums.Usage;
-import br.net.gvt.efika.queueAPI.model.factory.FactoryApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.enums.Usage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.factory.FactoryApiUsage;
 import javax.ws.rs.PathParam;
 
 /**
@@ -32,13 +32,10 @@ public class QueueController extends RestJaxAbstract {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response consumePendingTasks(ConsumerQueueTaskRequest request) {
-        ApiUsage use = FactoryApiUsage.create(request.getConsumer(), Usage.RETRIEVE);
         try {
             return ok(FactoryService.createConsumerQueueTaskService().consumePendingTasks(request));
         } catch (Exception e) {
             return serverError(e);
-        }finally{
-            
         }
     }
 

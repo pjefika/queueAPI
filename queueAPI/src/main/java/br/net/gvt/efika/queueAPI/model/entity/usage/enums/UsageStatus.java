@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.net.gvt.efika.queueAPI.model.enums;
+package br.net.gvt.efika.queueAPI.model.entity.usage.enums;
 
 /**
  *
  * @author G0041775
  */
-public enum Usage {
+public enum UsageStatus {
 
-    SAVE,
-    RETRIEVE,
-    UPDATE;
+    USING,
+    DONE_USING;
 
 }

@@ -7,7 +7,7 @@ package br.net.gvt.efika.queueAPI.dao.queue;
 
 import br.net.gvt.efika.mongo.dao.GenericDAO;
 import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
-import br.net.gvt.efika.queueAPI.model.enums.UsageStatus;
+import br.net.gvt.efika.queueAPI.model.entity.usage.enums.UsageStatus;
 import java.util.Date;
 
 /**

@@ -5,8 +5,8 @@
  */
 package br.net.gvt.efika.queueAPI.model.entity.usage;
 
-import br.net.gvt.efika.queueAPI.model.enums.Usage;
-import br.net.gvt.efika.queueAPI.model.enums.UsageStatus;
+import br.net.gvt.efika.queueAPI.model.entity.usage.enums.Usage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.enums.UsageStatus;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import java.util.Date;
