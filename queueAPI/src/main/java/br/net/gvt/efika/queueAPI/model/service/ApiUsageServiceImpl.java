@@ -6,9 +6,12 @@
 package br.net.gvt.efika.queueAPI.model.service;
 
 import br.net.gvt.efika.queueAPI.model.decorator.DecoratorApiUsage;
-import br.net.gvt.efika.queueAPI.model.entity.ApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.ListUsage;
 import br.net.gvt.efika.queueAPI.model.enums.UsageStatus;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ApiUsageServiceImpl extends AbstractApiUsageService implements ApiUsageService {
 
@@ -28,8 +31,13 @@ public class ApiUsageServiceImpl extends AbstractApiUsageService implements ApiU
     }
 
     @Override
-    public Long usingNow() throws Exception {
-        return getDao().ammountByStatus(UsageStatus.USING);
+    public List<ListUsage> usingNow() throws Exception {
+        List<ListUsage> l = new ArrayList<>();
+        l.add(new ListUsage(8081l, getDao().ammountByStatusAndPort(UsageStatus.USING, 8081l)));
+        l.add(new ListUsage(8082l, getDao().ammountByStatusAndPort(UsageStatus.USING, 8082l)));
+        l.add(new ListUsage(8083l, getDao().ammountByStatusAndPort(UsageStatus.USING, 8083l)));
+        l.add(new ListUsage(8084l, getDao().ammountByStatusAndPort(UsageStatus.USING, 8084l)));
+        return l;
     }
 
     @Override

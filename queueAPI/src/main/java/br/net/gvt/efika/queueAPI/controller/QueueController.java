@@ -6,7 +6,7 @@
 package br.net.gvt.efika.queueAPI.controller;
 
 import br.net.gvt.efika.queueAPI.controller.request.ConsumerQueueTaskRequest;
-import br.net.gvt.efika.queueAPI.model.entity.ApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;

@@ -6,7 +6,7 @@
 package br.net.gvt.efika.queueAPI.dao.queue;
 
 import br.net.gvt.efika.mongo.dao.AbstractMongoDAO;
-import br.net.gvt.efika.queueAPI.model.entity.ApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
 import br.net.gvt.efika.queueAPI.model.enums.UsageStatus;
 import br.net.gvt.efika.queueAPI.model.factory.FactoryApiUsage;
 import java.util.Date;
@@ -23,6 +23,14 @@ public class ApiUsageDAOImpl extends AbstractMongoDAO<ApiUsage> implements ApiUs
         return getDatastore().createQuery(ApiUsage.class)
                 .field("status").equal(status)
                 .field("port").equal(FactoryApiUsage.create().getPort())
+                .count();
+    }
+
+    @Override
+    public Long ammountByStatusAndPort(UsageStatus status, Long port) throws Exception {
+        return getDatastore().createQuery(ApiUsage.class)
+                .field("status").equal(status)
+                .field("port").equal(port)
                 .count();
     }
 

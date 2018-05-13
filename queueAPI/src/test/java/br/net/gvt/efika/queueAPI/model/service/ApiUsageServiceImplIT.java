@@ -5,17 +5,18 @@
  */
 package br.net.gvt.efika.queueAPI.model.service;
 
-import br.net.gvt.efika.queueAPI.model.entity.ApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.ListUsage;
 import br.net.gvt.efika.queueAPI.model.enums.Usage;
 import br.net.gvt.efika.queueAPI.model.factory.FactoryApiUsage;
 import br.net.gvt.efika.util.json.JacksonMapper;
 import java.util.Date;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -78,8 +79,8 @@ public class ApiUsageServiceImplIT {
         System.out.println("usingNow");
         ApiUsageServiceImpl instance = new ApiUsageServiceImpl();
 
-        Long result = instance.usingNow();
-        System.out.println("Result->" + result);
+        List<ListUsage> result = instance.usingNow();
+        System.out.println(new JacksonMapper(List.class).serialize(result));
     }
 
     /**

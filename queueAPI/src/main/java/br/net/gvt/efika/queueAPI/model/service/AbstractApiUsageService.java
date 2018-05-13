@@ -8,7 +8,7 @@ package br.net.gvt.efika.queueAPI.model.service;
 import br.net.gvt.efika.queueAPI.dao.factory.FactoryDAO;
 import br.net.gvt.efika.queueAPI.dao.queue.ApiUsageDAO;
 import br.net.gvt.efika.queueAPI.dao.queue.QueueTaskDAO;
-import br.net.gvt.efika.queueAPI.model.entity.ApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
 import org.mongodb.morphia.query.UpdateOperations;
 
 /**

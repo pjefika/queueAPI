@@ -5,8 +5,10 @@
  */
 package br.net.gvt.efika.queueAPI.model.service;
 
-import br.net.gvt.efika.queueAPI.model.entity.ApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.ListUsage;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -18,7 +20,7 @@ public interface ApiUsageService {
 
     public ApiUsage doneUsing(ApiUsage use) throws Exception;
 
-    public Long usingNow() throws Exception;
+    public List<ListUsage> usingNow() throws Exception;
 
     public Long usedSoFar() throws Exception;
 

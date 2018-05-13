@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.net.gvt.efika.queueAPI.model.entity;
+package br.net.gvt.efika.queueAPI.model.entity.usage;
 
 import br.net.gvt.efika.queueAPI.model.enums.Usage;
 import br.net.gvt.efika.queueAPI.model.enums.UsageStatus;

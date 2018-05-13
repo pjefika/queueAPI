@@ -5,7 +5,7 @@
  */
 package br.net.gvt.efika.queueAPI.model.factory;
 
-import br.net.gvt.efika.queueAPI.model.entity.ApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
 import br.net.gvt.efika.queueAPI.model.enums.Usage;
 import java.util.Calendar;
 

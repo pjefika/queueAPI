@@ -6,7 +6,7 @@
 package br.net.gvt.efika.queueAPI.dao.queue;
 
 import br.net.gvt.efika.mongo.dao.GenericDAO;
-import br.net.gvt.efika.queueAPI.model.entity.ApiUsage;
+import br.net.gvt.efika.queueAPI.model.entity.usage.ApiUsage;
 import br.net.gvt.efika.queueAPI.model.enums.UsageStatus;
 import java.util.Date;
 
@@ -17,6 +17,8 @@ import java.util.Date;
 public interface ApiUsageDAO extends GenericDAO<ApiUsage> {
 
     public Long ammountByStatus(UsageStatus status) throws Exception;
+
+    public Long ammountByStatusAndPort(UsageStatus status, Long port) throws Exception;
 
     public Long ammountByStatusFromDate(UsageStatus status, Date date) throws Exception;
 
