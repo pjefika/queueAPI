@@ -5,6 +5,8 @@
  */
 package br.net.gvt.efika.queueAPI.dao.factory;
 
+import br.net.gvt.efika.queueAPI.dao.queue.ApiUsageDAO;
+import br.net.gvt.efika.queueAPI.dao.queue.ApiUsageDAOImpl;
 import br.net.gvt.efika.queueAPI.dao.queue.QueueTaskDAO;
 import br.net.gvt.efika.queueAPI.dao.queue.QueueTaskDAOImpl;
 
@@ -16,6 +18,10 @@ public class FactoryDAO {
 
     public static QueueTaskDAO createQueueTaskDAO() {
         return new QueueTaskDAOImpl();
+    }
+
+    public static ApiUsageDAO createApiUsageDAO() {
+        return new ApiUsageDAOImpl();
     }
 
 }

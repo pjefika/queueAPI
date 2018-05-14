@@ -5,6 +5,8 @@
  */
 package br.net.gvt.efika.queueAPI.model.service.factory;
 
+import br.net.gvt.efika.queueAPI.model.service.ApiUsageService;
+import br.net.gvt.efika.queueAPI.model.service.ApiUsageServiceImpl;
 import br.net.gvt.efika.queueAPI.model.service.ConsumerQueueTaskService;
 import br.net.gvt.efika.queueAPI.model.service.ConsumerQueueTaskServiceImpl;
 import br.net.gvt.efika.queueAPI.model.service.QueueTaskService;
@@ -22,6 +24,10 @@ public class FactoryService {
 
     public static QueueTaskService createQueueTaskService() {
         return new QueueTaskServiceImpl();
+    }
+
+    public static ApiUsageService createApiUsageService() {
+        return new ApiUsageServiceImpl();
     }
 
 }

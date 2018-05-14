@@ -6,7 +6,6 @@
 package br.net.gvt.efika.queueAPI.dao.queue;
 
 import br.net.gvt.efika.mongo.dao.AbstractMongoDAO;
-import br.net.gvt.efika.mongo.dao.MongoEndpointEnum;
 import br.net.gvt.efika.queue.model.enuns.TaskState;
 import java.util.List;
 import br.net.gvt.efika.queueAPI.model.entity.QueueTask;
@@ -21,7 +20,7 @@ public class QueueTaskDAOImpl extends AbstractMongoDAO<QueueTask> implements Que
     public QueueTaskDAOImpl() {
         //10.40.197.137
         //10.200.35.67
-        super("127.0.0.1", "queueAPI", QueueTask.class);
+        super("10.200.35.67", "queueAPI", QueueTask.class);
     }
 
     @Override
