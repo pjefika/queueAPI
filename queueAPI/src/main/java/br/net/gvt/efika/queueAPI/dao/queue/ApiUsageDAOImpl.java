@@ -15,7 +15,7 @@ import org.mongodb.morphia.query.UpdateOperations;
 public class ApiUsageDAOImpl extends AbstractMongoDAO<ApiUsage> implements ApiUsageDAO {
 
     public ApiUsageDAOImpl() {
-        super("10.200.35.67", "queueAPI", ApiUsage.class);
+        super("127.0.0.1", "queueAPI", ApiUsage.class);
     }
 
     @Override

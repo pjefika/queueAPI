@@ -34,10 +34,10 @@ public class TaskController extends RestJaxAbstract {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getTask(@PathParam("id") ObjectId id) {
-        ApiUsage use = FactoryApiUsage.create("getter", Usage.RETRIEVE);
-        ApiUsageService usageService = FactoryService.createApiUsageService();
+//        ApiUsage use = FactoryApiUsage.create("getter", Usage.RETRIEVE);
+//        ApiUsageService usageService = FactoryService.createApiUsageService();
         try {
-            usageService.startUsing(use);
+//            usageService.startUsing(use);
             try {
                 return ok(FactoryService.createQueueTaskService().getById(id));
             } catch (Exception e) {
@@ -47,7 +47,7 @@ public class TaskController extends RestJaxAbstract {
             return serverError(ex);
         } finally {
             try {
-                usageService.doneUsing(use);
+//                usageService.doneUsing(use);
             } catch (Exception ex) {
             }
         }
@@ -83,10 +83,10 @@ public class TaskController extends RestJaxAbstract {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response queue(QueueTask task) {
-        ApiUsage use = FactoryApiUsage.create(task.getExecutor(), Usage.SAVE);
-        ApiUsageService usageService = FactoryService.createApiUsageService();
+//        ApiUsage use = FactoryApiUsage.create(task.getExecutor(), Usage.SAVE);
+//        ApiUsageService usageService = FactoryService.createApiUsageService();
         try {
-            usageService.startUsing(use);
+//            usageService.startUsing(use);
             try {
                 return ok(FactoryService.createQueueTaskService().queue(task));
             } catch (Exception e) {
@@ -96,7 +96,7 @@ public class TaskController extends RestJaxAbstract {
             return serverError(ex);
         } finally {
             try {
-                usageService.doneUsing(use);
+//                usageService.doneUsing(use);
             } catch (Exception ex) {
             }
         }
